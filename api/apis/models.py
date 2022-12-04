@@ -3,8 +3,10 @@ from django.db import models
 
 class SuppliersModels(models.Model):
     name = models.CharField(max_length=50)
-    description = models.TextField(max_length=200)
-
+    type = model.CharField(max_length=12)
+    website = models.CharField
+    #category view spreadsheet scraped data
+    
     def __str__(self):
         return self.name
 
