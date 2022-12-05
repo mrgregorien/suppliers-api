@@ -11,5 +11,4 @@ class SupplierSerializer(serializers.HyperlinkedModelSerializer):
     #model and fields declaration
     class Meta:
         model = SuppliersModels
-        fields = ('name', 'description')
-        
+        fields = '__all__'
