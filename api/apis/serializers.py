@@ -2,7 +2,7 @@
 from rest_framework import serializers
 
 #Model importations
-from .models import SuppliersModels
+from .models import SuppliersModel
 
 
 #Creation of serializer
@@ -10,5 +10,5 @@ from .models import SuppliersModels
 class SupplierSerializer(serializers.HyperlinkedModelSerializer):
     #model and fields declaration
     class Meta:
-        model = SuppliersModels
+        model = SuppliersModel
         fields = '__all__'

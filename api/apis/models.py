@@ -38,7 +38,7 @@ DEPARTMENT_CATEGORIES = [
     ('Cell Phones & Accessories','Cell Phones & Accessories'),
     ('Clothing Shoes & Jewelry','Clothing Shoes & Jewelry'),
     ('Collectibles & Fine Art',	'Collectibles & Fine Art'),
-    ('Computers','Computers'),
+    ('Computers & Accessories','Computers & Accessories'),
     ('Credit and Payment Cards','Credit and Payment Cards'),
     ('Digital Educational Resources','Digital Educational Resources'),
     ('Digital Music','Digital Music'),
@@ -67,18 +67,20 @@ DEPARTMENT_CATEGORIES = [
     ('Tools & Home Improvement','Tools & Home Improvement'),
     ('Toys & Games','Toys & Games'),
 ]
-class SuppliersModels(models.Model):
-    CompanyName = models.CharField(max_length=50,default='')
-    ContactName = models.CharField(max_length=24,default='')
-    ContactTitle = models.CharField(max_length=15, default='')
+class SuppliersModel(models.Model):
+    CompanyName = models.CharField(max_length=150,default='')
+    ContactName = models.CharField(max_length=24,default='', blank=True)
+    ContactTitle = models.CharField(max_length=15, default='', blank=True)
     Category = models.CharField(max_length=80, default='Category', choices=DEPARTMENT_CATEGORIES)
+    SubCategory = models.CharField(max_length=80, default='', blank=True)
+    ProductUrlReference = models.URLField(max_length=250, default='', blank=True)
     Address = models.CharField(max_length=42, default='')
     City = models.CharField(max_length=18,default='')
-    PostalCode = models.IntegerField(max_length=6, default='12041')
+    PostalCode = models.IntegerField(default='')
     Type = models.CharField(max_length=12, choices=SUPPLIER_TYPE, default=DIS)
     Website = models.URLField(max_length=250, default='')
-    Phone = models.IntegerField(max_length= 8 , default='123')
-    Email = models.EmailField(max_length=30, default='')
+    Phone = models.IntegerField(default='')
+    Email = models.EmailField(max_length=30, default='', blank=True)
     TimeZone = models.CharField(max_length=50, choices=TIMEZONE_CHOICES, default=EST)
 
 
@@ -88,5 +90,5 @@ class SuppliersModels(models.Model):
     #category view spreadsheet scraped data
     
     def __str__(self):
-        return self.CompanyName
+        return self.CompanyName + ' | ' + self.Category + ' | ' + self.Type 
 
